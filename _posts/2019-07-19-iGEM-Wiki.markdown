@@ -1,0 +1,365 @@
+---
+layout: post
+title: "iGEM Wiki 制作参考"
+date: 2019-07-19 08:47:00 +0800
+categories: iGEM Wiki
+tags: iGEM Wiki
+---
+# 前言
+2018 年，我非常幸运地加入了大连理工大学 iGEM 参赛队伍，并负责其中的 Wiki 制作与应用程序开发。
+由于网上 iGEM Wiki 制作相关的参考资料较少，并且 iGEM 的 Wiki 机制本身具有一定特点，因此在开发过程中不可避免地遇到了很多困难。
+本文对 iGEM Wiki 制作过程进行了总结，希望能为 Wiki 制作的同学提供一点参考。
+
+因为本文面向的是非计算机相关专业且无网页制作经验的同学，因此内容会尽量详细。
+
+本文中出现的 iGEM 链接多以 2019 年为例，你可能需要将其修改为对应的年份。
+
+本文内容为个人观点，仅供参考，若有纰漏，万望见谅。
+
+# 美工与设计
+iGEM 官方为我们提供了一套默认的 Wiki 模板。
+虽然可以直接使用默认模板，但是为了 Wiki 页面的美观性，我们需要对 Wiki 页面进行重新设计。
+因此，队伍中有名厉害的美工是件非常重要的事。
+在正式进行设计前，需要明晰以下几个问题。
+- 此次比赛中队伍的参赛作品应该有什么样的特点？
+- 应该如何以恰当的形式将这些特点展示出来？
+
+如果这些问题一时不能给出准确的答案，可以在往年比赛的 Best Wiki 中寻找灵感。
+例如，2016 年 [Groningen 队伍的 Wiki](http://2016.igem.org/Team:Groningen) 通过引导读者参与生物加解密的过程，达到了非常棒的展示效果。
+
+完成初步分析后，可以开始对 Wiki 进行粗略的设计并逐步细化。
+例如，界面风格（可爱的漫画风、明快的简洁风、神秘的科技风等）、基本色调（浅色、深色）、所需元素（导航栏、目录、图片展示等）、布局规划等。
+在这之后，负责美工的同学和负责 Wiki 制作的同学之间需要进行良好的沟通，这是非常重要的一环。
+另外，建议设计在定下来以后不要轻易修改，否则一来容易引起风格不统一，一处修改后可能导致其他地方也需要修改，
+二来可能会对制作 Wiki 的同学产生额外负担，因为一个不起眼的功能或设计可能需要大量的代码来实现。
+
+为了避免美工设计与实际实现有较大的出入，美工的同学可以将预想成品做成一张图，
+在图上标注好颜色、尺寸、字体等信息（如图所示，当然，从避免出入的角度来说，越详细越好），制作 Wiki 的同学根据图上信息完成代码的编写工作。
+
+![](/assets/2019-07-19-iGEM-Wiki/5.png)
+
+图片来自：[http://www.shui-mai.com/2018zuixinuishejiqietubiaozhupian/](http://www.shui-mai.com/2018zuixinuishejiqietubiaozhupian/)
+
+对了，还有一点需要注意的是，负责美工的同学设计出来的图片最好以透明为底色。如果以白色为底色，并且 Wiki 页面背景不是白色的话，就会出现下面这样的问题。
+
+![](/assets/2019-07-19-iGEM-Wiki/1.png)
+
+# 编程语言相关
+制作 Wiki 需要使用到三种语言，分别是 HTML、CSS 和 JavaScript。学习这三种语言可以参考 [http://www.w3school.com.cn/](http://www.w3school.com.cn/) 的教程。
+
+这个网站中每一节的教程都非常简单，但是并不是每一节的内容在 Wiki 制作过程中都用得到。
+如果你只是为了完成 Wiki 制作，并不打算对网页制作进行深入研究，那么可以在这些教程中选择一部分来学习。
+以下是建议的学习内容。
+
+HTML：[简介](http://www.w3school.com.cn/html/html_jianjie.asp)、
+[基础](http://www.w3school.com.cn/html/html_basic.asp)、
+[元素](http://www.w3school.com.cn/html/html_elements.asp)、
+[属性（可略过本节的“完整的 HTML 参考手册”和“HTML 标准属性参考手册”）](http://www.w3school.com.cn/html/html_attributes.asp)、
+[标题](http://www.w3school.com.cn/html/html_headings.asp)、
+[段落](http://www.w3school.com.cn/html/html_paragraphs.asp)、
+[样式](http://www.w3school.com.cn/html/html_styles.asp)、
+[格式化中的“文本格式化标签”](http://www.w3school.com.cn/html/html_formatting.asp)、
+[注释](http://www.w3school.com.cn/html/html_comments.asp)、
+[CSS](http://www.w3school.com.cn/html/html_css.asp)、
+[链接](http://www.w3school.com.cn/html/html_links.asp)、
+[图像](http://www.w3school.com.cn/html/html_images.asp)、
+[表格](http://www.w3school.com.cn/html/html_tables.asp)、
+[列表](http://www.w3school.com.cn/html/html_lists.asp)、
+[块](http://www.w3school.com.cn/html/html_blocks.asp)、
+[类](http://www.w3school.com.cn/html/html_classes.asp)、
+[布局](http://www.w3school.com.cn/html/html_layout.asp)、
+[背景](http://www.w3school.com.cn/html/html_backgrounds.asp)、
+[脚本](http://www.w3school.com.cn/html/html_scripts.asp)、
+[路径](http://www.w3school.com.cn/html/html_filepaths.asp)、
+[头部](http://www.w3school.com.cn/html/html_head.asp)、
+[实体](http://www.w3school.com.cn/html/html_entities.asp)、
+[颜色](http://www.w3school.com.cn/html/html_colors.asp)、
+[媒体](http://www.w3school.com.cn/html/html_media.asp)、
+[视频](http://www.w3school.com.cn/html/html_video.asp)。
+
+CSS：[简介](http://www.w3school.com.cn/css/css_jianjie.asp)、
+[基础语法](http://www.w3school.com.cn/css/css_syntax.asp)、
+[高级语法](http://www.w3school.com.cn/css/css_syntax_pro.asp)、
+[派生选择器](http://www.w3school.com.cn/css/css_syntax_descendant_selector.asp)、
+[ID 选择器](http://www.w3school.com.cn/css/css_syntax_id_selector.asp)、
+[类选择器](http://www.w3school.com.cn/css/css_syntax_class_selector.asp)、
+[创建](http://www.w3school.com.cn/css/css_howto.asp)、
+[背景](http://www.w3school.com.cn/css/css_background.asp)、
+[文本](http://www.w3school.com.cn/css/css_text.asp)、
+[字体](http://www.w3school.com.cn/css/css_font.asp)、
+[链接](http://www.w3school.com.cn/css/css_link.asp)、
+[列表](http://www.w3school.com.cn/css/css_list.asp)、
+[表格](http://www.w3school.com.cn/css/css_table.asp)、
+[轮廓](http://www.w3school.com.cn/css/css_outline.asp)、
+[框模型概述](http://www.w3school.com.cn/css/css_boxmodel.asp)、
+[内边距](http://www.w3school.com.cn/css/css_padding.asp)、
+[边框](http://www.w3school.com.cn/css/css_border.asp)、
+[外边距](http://www.w3school.com.cn/css/css_margin.asp)、
+[外边距合并](http://www.w3school.com.cn/css/css_margin_collapsing.asp)、
+[定位概述](http://www.w3school.com.cn/css/css_positioning.asp)、
+[相对定位](http://www.w3school.com.cn/css/css_positioning_relative.asp)、
+[绝对定位](http://www.w3school.com.cn/css/css_positioning_absolute.asp)、
+[浮动](http://www.w3school.com.cn/css/css_positioning_floating.asp)、
+[元素选择器](http://www.w3school.com.cn/css/css_selector_type.asp)、
+[选择器分组](http://www.w3school.com.cn/css/css_selector_grouping.asp)、
+[类选择器详解](http://www.w3school.com.cn/css/css_selector_class.asp)、
+[ID 选择器详解](http://www.w3school.com.cn/css/css_selector_id.asp)、
+[后代选择器](http://www.w3school.com.cn/css/css_selector_descendant.asp)、
+[子元素选择器](http://www.w3school.com.cn/css/css_selector_child.asp)、
+[伪类](http://www.w3school.com.cn/css/css_pseudo_classes.asp)、
+[伪元素](http://www.w3school.com.cn/css/css_pseudo_elements.asp)、
+[对齐](http://www.w3school.com.cn/css/css_align.asp)、
+[尺寸](http://www.w3school.com.cn/css/css_dimension.asp)、
+[分类](http://www.w3school.com.cn/css/css_classification.asp)、
+[导航栏](http://www.w3school.com.cn/css/css_navbar.asp)、
+[图片透明](http://www.w3school.com.cn/css/css_image_transparency.asp)。
+
+CSS3：[简介](http://www.w3school.com.cn/css3/css3_intro.asp)、
+[边框](http://www.w3school.com.cn/css3/css3_border.asp)、
+[背景](http://www.w3school.com.cn/css3/css3_background.asp)、
+[字体](http://www.w3school.com.cn/css3/css3_font.asp)、
+[过渡](http://www.w3school.com.cn/css3/css3_transition.asp)、
+[动画](http://www.w3school.com.cn/css3/css3_animation.asp)。
+
+JavaScript：[简介](http://www.w3school.com.cn/js/js_intro.asp)、
+[使用](http://www.w3school.com.cn/js/js_shiyong.asp)、
+[输出](http://www.w3school.com.cn/js/js_output.asp)、
+[语句](http://www.w3school.com.cn/js/js_statements.asp)、
+[语法](http://www.w3school.com.cn/js/js_syntax.asp)、
+[注释](http://www.w3school.com.cn/js/js_comments.asp)、
+[变量](http://www.w3school.com.cn/js/js_variables.asp)、
+[运算符](http://www.w3school.com.cn/js/js_operators.asp)、
+[算术](http://www.w3school.com.cn/js/js_arithmetic.asp)、
+[赋值](http://www.w3school.com.cn/js/js_assignment.asp)、
+[数据类型](http://www.w3school.com.cn/js/js_datatypes.asp)、
+[函数](http://www.w3school.com.cn/js/js_functions.asp)、
+[对象](http://www.w3school.com.cn/js/js_objects.asp)、
+[事件](http://www.w3school.com.cn/js/js_events.asp)、
+[字符串](http://www.w3school.com.cn/js/js_strings.asp)、
+[字符串方法](http://www.w3school.com.cn/js/js_string_methods.asp)、
+[数字](http://www.w3school.com.cn/js/js_numbers.asp)、
+[数值方法](http://www.w3school.com.cn/js/js_number_methods.asp)、
+[数组](http://www.w3school.com.cn/js/js_arrays.asp)、
+[数组方法](http://www.w3school.com.cn/js/js_array_methods.asp)、
+[逻辑](http://www.w3school.com.cn/js/js_booleans.asp)、
+[比较](http://www.w3school.com.cn/js/js_comparisons.asp)、
+[条件](http://www.w3school.com.cn/js/js_if_else.asp)、
+[`for`循环](http://www.w3school.com.cn/js/js_loop_for.asp)、
+[`while`循环](http://www.w3school.com.cn/js/js_loop_while.asp)、
+[`break`和`continue`](http://www.w3school.com.cn/js/js_break.asp)、
+[类型转换](http://www.w3school.com.cn/js/js_type_conversion.asp)、
+[作用域](http://www.w3school.com.cn/js/js_scope.asp)、
+[`this`关键词](http://www.w3school.com.cn/js/js_this.asp)、
+[`let`](http://www.w3school.com.cn/js/js_let.asp)、
+[`const`](http://www.w3school.com.cn/js/js_const.asp)、
+[调试](http://www.w3school.com.cn/js/js_debugging.asp)、
+[样式指南](http://www.w3school.com.cn/js/js_conventions.asp)、
+[最佳实践](http://www.w3school.com.cn/js/js_best_practices.asp)、
+[错误](http://www.w3school.com.cn/js/js_mistakes.asp)、
+[性能](http://www.w3school.com.cn/js/js_performance.asp)、
+[JSON](http://www.w3school.com.cn/js/js_json.asp)、
+[对象定义](http://www.w3school.com.cn/js/js_object_definition.asp)、
+[对象属性](http://www.w3school.com.cn/js/js_object_properties.asp)、
+[对象方法](http://www.w3school.com.cn/js/js_object_methods.asp)。
+
+其中，CSS 选择器部分非常非常重要。
+
+另外，iGEM 已经在 Wiki 中内置了 jQuery，可以直接使用。jQuery 是一个 JavaScript 库，简化了 JavaScript 编程。
+jQuery 的相关内容也可以在 [http://www.w3school.com.cn/jquery/index.asp](http://www.w3school.com.cn/jquery/index.asp) 中有选择性地学习。
+
+编写网页时建议使用的开发工具是 WebStorm，它虽然有点重量级，但确实好用。
+你可以在 [https://www.jetbrainscom/webstorm/](https://www.jetbrainscom/webstorm/) 中获取到 WebStorm。
+WebStorm 会提供 30 天的试用期，但是我们开发时长往往不止一个月，所以最好使用校园邮箱将其注册为学生免费版，注册方式在这里略去。
+
+# 规定与须知
+在开始进行 Wiki 制作之前，请先了解这一年 iGEM 的相关规定与须知，这部分内容可以在
+[Competition/Deliverables/Wiki 页面](https://2019.igem.org/Competition/Deliverables/Wiki)、
+[iGEM 主页 Resources 下 Wiki Editing Help 页面](https://2019.igem.org/Resources/Wiki_Editing_Help)、
+[HTML CSS JavaScript 页面](https://2019.igem.org/Resources/Using_HTML_CSS_and_Javascript)和
+[Template Documentation 页面](https://2019.igem.org/Resources/Template_Documentation)中找到。
+
+## 登陆条
+每一个 iGEM 页面顶端都有一个黑色的登陆条，在编辑 Wiki 时要注意，不能修改、隐藏或禁用这一登陆条。
+## 版权
+在使用资源时，请注意不要未经允许使用带有版权的资源，包括图片、音频、视频、字体等。
+尤其是字体，不少人可能会忽略掉这一点，在开发过程中直接使用了系统自带的字体，但实际上这些字体可能受到版权保护。
+尽管我们可以看到在历年的比赛中有不少参赛队伍使用了版权保护字体，有些甚至可能还获得了 Best Wiki，但这种行为是不可取的。
+
+那么，我们怎样才能知道哪些字体是可以自由使用的呢？
+一个好办法是直接从开源字体网上下载字体，例如 [Google Fonts](https://fonts.google.com/)[^googleFonts]、[The League of Moveable Type](https://www.theleagueofmoveabletype.com/)、[Font Squirrel](https://www.fontsquirrel.com/) 等。
+如果不放心，可以读一读随字体附带的条款（虽然我知道里面有一堆法律术语 2333）。
+如果 Wiki 中需要用到希腊字母等稍微特殊的字符，记得测试一下你看中的字体里是否包含了这些字符。
+
+另外，记得不要使用技术过时漏洞又多还不开源的 Adobe Flash Player。
+## 外部链接
+iGEM 规定，Wiki 的所有内容都必须保存在 iGEM 的服务器上，不允许从其他网站引入。
+这样做一是为了避免有人在 Wiki 截止日期之后，继续从外部对 Wiki 内容进行修改，从而对其他参赛队伍不公平，
+二是为了避免因外部服务器故障、停机等而导致的信息丢失或页面不可用的问题。
+
+那么如果想要在自己的 Wiki 中使用其他 JavaScript 库之类的怎么办呢？
+官方提供的方法是，复制要引用的 CSS 或 JavaScript 文件的代码（这些文件可以用文本编辑器，例如 Windows 系统下的记事本打开），
+在 iGEM 中创建一个模板文件（创建模板文件和引用模板的方法请参考 [iGEM 主页 Resources 下 HTML CSS JavaScript 页面](https://2019.igem.org/Resources/Using_HTML_CSS_and_Javascript)），
+再把代码贴进去，提交即可。
+
+但是这个方法有个问题，上传的模板有一个编辑内容长度限制，不能超过 2M，超过限制的模板无法上传。
+我曾经试着将一个超出 2M 的 JavaScript 文件通过[上传页面](http://2018.igem.org/Special:Upload)直接以文件的形式上传，但却提示因为文件中包含脚本语言，可能会带来安全问题而被拒绝上传，最后只好作罢。（心情复杂）
+
+规定里面是这么说，可不知道是不是因为这个很坑的原因，还是有些 Best Wiki 没有遵守这条规定……
+
+![](/assets/2019-07-19-iGEM-Wiki/6.jpg)
+
+## Wiki 编辑
+每一支队伍都应该将其 Wiki 中所有内容置于其命名空间中，不仅仅是 Wiki 页面本身，还包括上传的图片、视频、CSS 和 JavaScript 等。
+
+大部分基本操作可以参考 [iGEM 主页 Resources 下 Wiki Editing Help 页面](https://2019.igem.org/Resources/Wiki_Editing_Help)、
+[HTML CSS JavaScript 页面](https://2019.igem.org/Resources/Using_HTML_CSS_and_Javascript)和
+[Template Documentation 页面](https://2019.igem.org/Resources/Template_Documentation)。
+
+iGEM 已经为我们提供了用于显示数学公式的 MathJax 库。
+
+如果模板中包含了 JavaScript，或使用了内联 JavaScript，那么将不能使用逻辑与运算符（`&&`），
+具体原因请参照 [iGEM 主页 Resources 下 HTML CSS JavaScript 页面](https://2019.igem.org/Resources/Using_HTML_CSS_and_Javascript)。
+
+## 其他
+规定中其他内容也要仔细阅读噢。
+
+# 浏览器相关
+进行网页开发，个人极力推荐使用 Google Chrome 浏览器，可以在 [https://www.google.cn/chrome/](https://www.google.cn/chrome/) 获取[^chrome]。
+也可以使用 Mozilla Firefox 浏览器，可以在 [https://www.mozilla.org/firefox/](https://www.mozilla.org/firefox/) 获取。
+由于微软已经停止了对 Internet Explorer 10 及其之前版本的支持（[详情](https://www.microsoft.com/zh-cn/windowsforbusiness/end-of-ie-support)），因此，不建议使用 Internet Explorer。
+至于 Opera、Microsoft Edge 和 Safari，因为我基本没用过，所以不太清楚……
+
+但是，非常不建议使用 360 的浏览器。
+
+![](/assets/2019-07-19-iGEM-Wiki/7.png)
+
+以上的浏览器中，选择一个作为开发常用的浏览器即可。
+当然，如果你愿意，也可以多安装几个浏览器，用于测试编写出来的页面。
+不过不管是用于开发还是用于测试，浏览器的版本都应该尽量新。
+
+在 Chrome 中，按下`Ctrl+Shift+I`可以调出开发者工具（苹果系统的快捷键有所不同），如图所示。
+
+![](/assets/2019-07-19-iGEM-Wiki/3.png)
+
+在这里可以查看网页中各个元素使用到的层叠样式表，直接修改网页上的内容或其属性，直至达到自己想要的效果。
+但是需要注意的是，此时在开发者工具中对网页做出的所有修改都是临时的，在刷新或重新打开网页时，这些修改都会消失。
+所以，在将网页修改至满意时，可以将这些代码复制到实际的代码中，这样就可以将这些修改保存下来。
+
+Chrome 开发者工具的使用说明可以参考[这里](https://developers.google.cn/web/tools/chrome-devtools/)。
+
+我发现开发者工具里的颜色工具非常好玩，设计配色的时候挺方便的，使用方法自己摸索吧～。
+
+## 过期的 CSS 与 JavaScript
+如果使用 Chrome 开发，有时在修改完 CSS 或 JavaScript 并保存后，页面上的内容并没有发生相应的变化。
+其中一个解决方法是，在每次修改完 CSS 或 JavaScript 后，都清除一次浏览数据。
+但是这样会把其他与 Wiki 不相关的浏览数据给一并删除。
+另一个解决方法是，使用 Chrome 的无痕式浏览。
+这种浏览方式不会保存浏览记录和页面载入所需要的其他文件，因此也不会将过期的 CSS 与 JavaScript 用于展示页面。
+
+我当时使用的是第二种方法。
+
+但是不管哪一种方法，看上去都挺麻烦的……
+
+后来我在网上找到了一个方法，打开开发者工具，按下`F1`，在`Preference`-`Network`中勾选`Disable cache (while DevTools is open)`即可。
+这个方法很简单，不过我没有试过，不知道有没有用 23333。
+
+## 使用不同浏览器进行测试
+你可能已经发现了，在编写某些 CSS 属性时，WebStorm 会一下帮我们列出好几条像是重复了的属性，如图所示。
+
+![](/assets/2019-07-19-iGEM-Wiki/8.png)
+
+之所以出现这种情况是因为，某些 CSS 属性在尚未形成标准时，不同的浏览器对这一属性有着不同的实现方式，为了与将来确定下来的标准兼容，所以在属性名称前面加上前缀以示区分。
+而之后，一些 CSS 属性逐渐形成标准，而这些带有前缀的 CSS 属性也随之保留了下来。
+
+这也从侧面反映出，同样的代码在不同的浏览器上可能会有不同的展示效果。
+为了确保在不同的浏览器上 Wiki 都能够正确展示，最好保留这些带有前缀的 CSS 属性，并使用不同的浏览器进行测试。
+
+如果其他的浏览器展示出来的不是预期的效果，请使用不同浏览器的开发者工具对网页中相关元素的属性值进行重新调整，如图所示。
+
+![](/assets/2019-07-19-iGEM-Wiki/9.png)
+
+# CSS 覆盖
+iGEM 中所有的页面都是基于 MediaWiki 构建的，因此，我们在 Wiki 编辑页面提交的代码与最终实际展示的代码并不是完全相同的。
+实际上，我们在编辑页面提交的代码，会经过 MediaWiki 处理，修改代码中的部分内容（如引用模板的替换等），并将处理后的代码嵌入到一个已经写好的“框架”中，最终用于展示的是带有“框架”的修改后的代码。如图所示。
+
+你可以试着在新页面提交一个简单的 HTML 代码，并在提交完成之后查看这个新页面的源代码（在 Chrome 中按下`Ctrl+U`可以查看网页源代码）。
+
+![](/assets/2019-07-19-iGEM-Wiki/2.png)
+
+这就导致很多时候我们编写的代码在本机浏览器上的样子，与上传至 iGEM 后实际展示出来的样子有很大的差异。
+再具体一点来说，就是这个“框架”中引入了 iGEM 定义的层叠样式表，并且这些层叠样式表定义的属性覆盖了我们层叠样式表中定义的属性，使得所展示出来的是 iGEM 定义的样式，而不是我们定义的样式。
+
+我们不能对这一“框架”进行修改。要让我们定义的样式生效，有两种解决思路。
+一是自行编写脚本，取消“框架”中层叠样式表的引入；
+二是修改我们的层叠样式表，使其覆盖 iGEM 定义的属性。
+前面提到，iGEM 规定制作 Wiki 时不允许修改、隐藏或禁用页面上访的黑色登陆条，而“框架”中引入的层叠样式表正好包含了登陆条所需要用到的信息。
+另一方面，层叠样式表本身是设计成用来覆盖的，用新的值覆盖旧的值是正常操作，但是尝试取消一个已经引入的规则可能会带来不可预料的问题（以前遇到这个问题查资料时忘记是从哪里看来的了）。
+因此，第一种解决思路不可行，使用第二种解决思路。
+
+要覆盖 iGEM 定义的属性，首先需要了解层叠样式表的层叠机制。此时 CSS 选择器部分的内容就派上了用场。
+层叠机制的详细内容可以参考 CSS 的[层叠和继承](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Introduction_to_CSS/Cascade_and_inheritance)，
+英文版的在[这里](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Cascade_and_inheritance)。
+
+简单来说，网页上的元素最终应用哪一条规则定义的属性，依次取决于规则的重要性、专用性和代码顺序，且前者覆盖后者。
+
+1. 重要性的角度来说，`!important`将会覆盖其他所有规则。
+
+2. 专用性用于衡量选择器的具体程度，即该选择器可以匹配多少元素。越能精确地匹配元素，则专用性越高。
+    一个选择器具有的专用性的量是用四个不同的值（或组件）来衡量的，它们可以被认为是千位、百位、十位和个位——在四个列中的四个简单数字。
+
+    - 千位：如果是在元素的标签中添加`style`属性（即内联样式），如`<div style="...">...</div>`，则该列加 1 分（这样的声明没有选择器，所以它们的专用性总是 1000），否则为 0。
+    - 百位：在整个选择器中每包含一个 ID 选择器，该列加 1 分。
+    - 十位：在整个选择器中每包含一个类选择器、属性选择器或伪类，该列加 1 分。
+    - 个位：在整个选择器中每包含一个元素选择器或伪元素选择器，该列加 1 分。
+
+    注意：通用选择器（`*`）、复合选择器（`+`、`>`、`~`和后代选择器[^descendantSelector]）和否定伪类（`:not`）在专用性中无影响。
+
+3. 当规则的重要性和专用性相同时，根据引入的顺序决定样式，后引入的规则将被优先采用。
+
+了解这些规则后，就可以开始修改我们的层叠样式表，愉快地覆盖 iGEM 的属性了。
+
+我当时的做法是，`<body>`内所有的元素都置于一个大的`<div id="dlutb">...</div>`中，
+并且给里面好多元素都加上`id`，最后在 CSS 中使用 ID 选择器疯狂堆专用性 23333。
+具体的代码在文末给了链接。
+
+为了能够让本地的开发环境与最后嵌入“框架”的环境相近，可以保存一份简单点的 Wiki 代码（在 Chrome 中按下`Ctrl+S`可以保存网页源代码），
+并在此基础上修改。
+# 引用多媒体文件
+首先转到[上传页面](https://2019.igem.org/Special:Upload)，选择文件后按照命名要求填好网页上的内容，命名要尽量精确。
+注意，这里要求上传文件的大小不能超过 100 MB，因此在上传视频之前请提前压缩好。
+完成后可以在[文件列表页面](https://2019.igem.org/Special:ListFiles)输入自己的用户名找到自己上传过的文件。
+如图所示。
+
+![](/assets/2019-07-19-iGEM-Wiki/10.png)
+
+在下方列表中，文件名的后面有一个 “(file)” 链接，这个链接所指向的就是上传好的文件的真实地址。
+把这个地址复制下来，就可以直接在 Wiki 中使用了。
+
+由于接下来可能会上传大量的图片，我当时的做法是把每一张图片对应的地址都保存在一个文件里，需要的时候可以直接在里面查。
+
+嗯我当时传了近 400 份文件呢。
+
+![](/assets/2019-07-19-iGEM-Wiki/11.jpg)
+
+对了，如果有在一行中并排展示的图片，建议把它们裁成等高度的，以免插入图片时还需要额外处理尺寸。
+
+# 写在最后
+一定一定一定要尽早将文案和设计做好，千万千万千万不要把任务堆在 Wiki 截止日期前几天，要不然 Wiki 制作人员就太痛苦了，而且可能由于紧张情绪，很难把诸多页面处理妥当，这只是其一。
+其二，临近截止日期，iGEM 服务器的压力也将增大，而且这是一个国际性的比赛，每时每刻都可能有人在往服务器上上传数据，不会有半夜三点钟服务器空闲的情况。
+要是服务器崩了写不了 Wiki，同学们可能更崩溃，你可以想象一下每年选课季，众人上学校教务网抢课的场景。
+
+制作 Wiki 不单单是负责编写代码的同学的工作，团队中每一名成员都可以为 Wiki 献计献策。
+在编辑文案时，为了避免因多人共同编辑相同部分而带来的问题，建议将每一页的内容分配至单独一个人来完成。
+
+由于制作 Wiki 所需要的文件比较多，所以如果担心弄乱的话，可以将需要上传的文件统一由一个帐号上传，或者将上传过的文件在一个地方记下来。
+
+要认真看 iGEM 网站上的说明噢。有时一个忙了半天没解决的问题，说不定上面就有相关说明。
+大部分的文档都可以通过 iGEM 主页右侧的导航栏找到。
+
+2018 年 DLUT_China_B 队的 Wiki 在[这里](http://2018.igem.org/Team:DLUT_China_B)，其源代码已经放在了 Github 上，可以在[这里](https://www.github.com/zkingri/iGEM)获取。
+
+[^googleFonts]: 可能需要翻墙。
+
+[^chrome]: 可能需要翻墙。或者你可以在 [http://ping.chinaz.com](http://ping.chinaz.com) 中输入“`dl.google.com`”，在下方监测结果中挑选一条响应 IP 地址，在命令行中输入 `ping <你选择的 IP 地址>`，如果能够接收到回复，则将“`dl.google.com <你选择的 IP 地址>`”添加到 `hosts` 文件后再尝试下载。Windows 系统的`hosts`文件在`C:\Windows\System32\drivers\etc\hosts.txt`，具体修改方法可以参考 [https://zhinan.sogou.com/guide/detail/?id=316512442509](https://zhinan.sogou.com/guide/detail/?id=316512442509)。
+
+[^descendantSelector]: 在上文中提到的文档中并没有明确指出这是后代选择器，而是以空格加上两个单引号的形式出现的（即 `' '`），但是 [Specificity - CSS: Cascading Style Sheets \| MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) 一文中将`' '`链接至了后代选择器，因此可以推断空格加上两个单引号实指后代选择器。
