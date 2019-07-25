@@ -1,3 +1,10 @@
+#gitalk-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 /* variables */
 /* functions & mixins */
 /* variables - calculated */
