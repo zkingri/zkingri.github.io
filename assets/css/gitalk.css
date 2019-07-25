@@ -5,6 +5,10 @@
     padding-right: 20px;
 }
 
+.gt-comment-body.markdown-body {
+  width: auto;
+}
+
 /* variables */
 /* functions & mixins */
 /* variables - calculated */
