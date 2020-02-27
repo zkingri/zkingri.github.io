@@ -113,9 +113,10 @@ $(document).ready(function(){
      * The Post Navigator
      */
     $('.read-next-item section').each(function() {
-        var n = $(this).height();
-        var rn = $('.read-next-item').height();
-        $(this).css('margin-top', (rn - n) / 2 + 'px');
+        var textHeight = $(this).height();
+        var cardHeight = $('.read-next-item').height();
+        var iconHeight = $('.read-next-item .read-nav').height() + parseInt($('.read-next-item .read-nav').css('margin-top'), 10);
+        $(this).css('margin-top', (cardHeight - textHeight) / 2 - iconHeight * 4 / 5 + 'px');
         $(this).fadeIn();
     });
 
@@ -244,7 +245,7 @@ $(document).ready(function(){
      * Copy and copyright
      */
     function setClipboardData(str) {
-        str += '\n\n著作权归作者所有。\n商业转载请联系作者获得授权,非商业转载请注明出处。\n原文: ' + location.href;
+        str += '\n著作权归作者 Z King`Ri 所有。\n商业转载请联系作者（YD821607@126.com）获得授权，非商业转载请注明出处。\n原文: ' + location.href;
         $('.post-content').on('copy', function(e) {
             var data = window.clipboardData || e.originalEvent.clipboardData;
             data.setData('text/plain', str);

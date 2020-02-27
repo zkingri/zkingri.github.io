@@ -3,10 +3,10 @@
 {% include post-head.html %}
 
 <body>
-  <!--[if lt IE 10]>
-<div class="alert-danger" role="alert">你的浏览器太旧了，需要更新。</div>
-<![endif]-->
-  <input id="nm-switch" type="hidden" value="{{ site.nightMode }}"> {% include header.html %}
+    <!--[if lt IE 10]>
+    <div class="alert-danger" role="alert">你的浏览器太旧了，需要更新。</div>
+    <![endif]-->
+    <input id="nm-switch" type="hidden" value="{{ site.nightMode }}"> {% include header.html %}
 
   <header
     class="g-banner post-header {{ site.postPatterns | prepend: 'post-pattern-' }} {{ site.theme-color | prepend: 'bgcolor-' }} {% unless page.cover %}post-no-cover{% endunless %}"
@@ -77,6 +77,9 @@
       {% if page.next.url %}
       <div class="read-next-item">
         <a href="{{ page.next.url | relative_url }}" class="read-next-link"></a>
+        <div class="read-nav read-nav-next">
+            <i class="fas fa-angle-left"></i>
+        </div>
         <section>
           <span>{{ page.next.title }}</span>
           <p>{{ page.next.excerpt | strip_html | strip_newlines | truncate: 60}}</p>
@@ -91,20 +94,23 @@
       {% if page.previous.url %}
       <div class="read-next-item">
         <a href="{{ page.previous.url | relative_url }}" class="read-next-link"></a>
-          <section>
-            <span>{{ page.previous.title }}</span>
-            <p>{{ page.previous.excerpt | strip_html | strip_newlines | truncate: 60}}</p>
-          </section>
-          {% if page.previous.cover %}
-          <div class="filter"></div>
-          <img src="{{ page.previous.cover | relative_url }}" alt="">
-          {% endif %}
+        <div class="read-nav read-nav-pre">
+            <i class="fas fa-angle-right"></i>
+        </div>
+        <section>
+        <span>{{ page.previous.title }}</span>
+        <p>{{ page.previous.excerpt | strip_html | strip_newlines | truncate: 60}}</p>
+        </section>
+        {% if page.previous.cover %}
+        <div class="filter"></div>
+        <img src="{{ page.previous.cover | relative_url }}" alt="">
+        {% endif %}
       </div>
       {% endif %}
     </section>
     
     {% if site.comments.gitalk %}
-    <div id="gitalk-container"></div>
+    <div id="gitalk-container">未能载入评论系统，请稍后再试。</div>
     {% endif %}
   </section>
 
@@ -128,13 +134,13 @@
   {% if site.comments.gitalk %}
   <script>
     const gitalk = new Gitalk({
-    clientID: 'd3e7cfe12048e471c81a',
-    clientSecret: 'de29ebfddf57a8e7d96a0dea8f1713d7bcf122ba',
-    repo: 'zkingri.github.io',
-    owner: 'zkingri',
-    admin: ['zkingri'],
-    id: location.pathname,
-    distractionFreeMode: false  // Facebook-like distraction free mode
+        clientID: 'd3e7cfe12048e471c81a',
+        clientSecret: 'de29ebfddf57a8e7d96a0dea8f1713d7bcf122ba',
+        repo: 'zkingri.github.io',
+        owner: 'zkingri',
+        admin: ['zkingri'],
+        id: location.pathname,
+        distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
     gitalk.render('gitalk-container');
@@ -142,7 +148,6 @@
   {% endif %}
 
   <script src="{{ "/assets/js/prism.js" | relative_url }}"></script>
-  <!--<script src="{{ "/assets/js/index.min.js" | relative_url }}"></script>-->
   <script src="{{ "/assets/js/index.js" | relative_url }}"></script>
 </body>
 
