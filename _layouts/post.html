@@ -41,14 +41,15 @@
     <h2 class="post-subtitle">{{ page.subtitle }}</h2>
     {% endif %}
 
-    <article class="markdown-body">
-      {{ page.content }}
-    </article>
-
-    {% if site.social-share %}
-    <div class="social-share-wrapper">
-      <div class="social-share"></div>
+    <div id="post-body">
+        <div id="contents"></div>
+        
+        <article class="markdown-body">
+        {{ page.content }}
+        </article>
     </div>
+    {% if site.social-share %}
+    <div class="social-share"></div>
     {% endif %}
   </div>
 
@@ -61,17 +62,7 @@
       <div class="bio">
         <p>{{ site.bio }}</p>
       </div>
-      {% if site.sns.size > 0 %}
-      <ul class="sns-links">
-        {% for s in site.sns %}
-        <li>
-          <a href="{{ s[1] }}" target="_blank">
-                    <i class="iconfont icon-{{ s[0] }}"></i>
-                </a>
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
+      {% include sns.html %}
     </section>
     <section class="post-footer-item read-next">
       {% if page.next.url %}
@@ -82,7 +73,7 @@
         </div>
         <section>
           <span>{{ page.next.title }}</span>
-          <p>{{ page.next.excerpt | strip_html | strip_newlines | truncate: 60}}</p>
+          <p>{{ page.next.excerpt | strip_html | strip_newlines | truncate: 60, "……"}}</p>
         </section>
         {% if page.next.cover %}
         <div class="filter"></div>
@@ -99,7 +90,7 @@
         </div>
         <section>
         <span>{{ page.previous.title }}</span>
-        <p>{{ page.previous.excerpt | strip_html | strip_newlines | truncate: 60}}</p>
+        <p>{{ page.previous.excerpt | strip_html | strip_newlines | truncate: 60, "……"}}</p>
         </section>
         {% if page.previous.cover %}
         <div class="filter"></div>
@@ -149,6 +140,17 @@
 
   <script src="{{ "/assets/js/prism.js" | relative_url }}"></script>
   <script src="{{ "/assets/js/index.js" | relative_url }}"></script>
+  <script src="{{ "/assets/js/contents.js" | relative_url }}"></script>
+  <script>
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                topToggle();
+            });
+            $(window).scroll(function () {
+                contentsAnchor();
+            });
+        });
+    </script>
 </body>
 
 </html>

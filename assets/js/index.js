@@ -1,61 +1,59 @@
 $('#back').click(function () {
-    if(navigator.userAgent.indexOf("Edge")>-1)
-        $('body').animate( {scrollTop: 0}, 500);
+    if (navigator.userAgent.indexOf("Edge") > -1)
+        $('body').animate({scrollTop: 0}, 500);
     else
-        $('html').animate( {scrollTop: 0}, 500);
+        $('html').animate({scrollTop: 0}, 500);
 });
+
 function topToggle() {
-    if($(window).scrollTop()>600)
-        document.getElementById("back").style.display="block";
+    if ($(window).scrollTop() > 600)
+        document.getElementById("back").style.display = "block";
     else
-        document.getElementById("back").style.display="none";
+        document.getElementById("back").style.display = "none";
 }
 
-$(document).ready(function(){
-    var nav = $('.g-nav');
+$(document).ready(function () {
+    let nav = $('.g-nav');
 
     /**
      * Responsive Navigation
      */
-    $('#menu-toggle').on('click', function(e) {
-        var duration = 200;
+    $('#menu-toggle').on('click', function (e) {
+        let duration = 200;
         nav.slideToggle(duration);
-        $(document).on('click', function() {
+        $(document).on('click', function () {
             nav.slideUp(duration);
         });
         e.stopPropagation();
     });
 
-    nav.on('click', function(e) {
+    nav.on('click', function (e) {
         e.stopPropagation();
     });
 
     /*
     *  Header Bar
     */
-    if($(window).width() > 695) {
-        var header = $('.g-header');
-        var headerHeight = header.outerHeight();
-        var logo = $('.g-logo');
-        var navText = nav.find('a');
-        var themeStyle = $('.g-banner').attr('data-theme');
-        var scFlag = $(document).scrollTop();
+    if ($(window).width() > 695) {
+        let header = $('.g-header');
+        let headerHeight = header.outerHeight();
+        let navText = nav.find('a');
+        let themeStyle = $('.g-banner').attr('data-theme');
+        let scFlag = $(document).scrollTop();
 
-        $(document).scroll(function() {
-            var scrollTop = $(this).scrollTop();
-            var navClassName = 'nav-' + themeStyle;
+        $(document).scroll(function () {
+            let scrollTop = $(this).scrollTop();
+            let navClassName = 'nav-' + themeStyle;
 
             if (scrollTop > headerHeight) {
-                if(scrollTop > 3 * headerHeight) {
+                if (scrollTop > 3 * headerHeight) {
                     header.addClass('headerUp');
                 }
                 header.css({
-                    'background-color': 'rgba(255, 255, 255, .98)',
-                    'box-shadow': '0 1px 12px rgba(0, 0, 0, .08)'
-                });
-                logo.css({
-                    'background': 'url(/assets/icons/logo_' + themeStyle + '.svg) no-repeat center',
-                    'background-size': '100% 100%'
+                    'background-color': 'rgba(255, 255, 255, .7)',
+                    'backdrop-filter': 'saturate(180%) blur(20px)',
+                    '-webkit-backdrop-filter': 'saturate(180%) blur(20px)',
+                    'border-bottom': 'rgba(51,51,51,.1) 1px solid'
                 });
                 navText.css('color', '#666');
                 nav.addClass(navClassName);
@@ -63,11 +61,9 @@ $(document).ready(function(){
                 header.removeClass('headerUp');
                 header.css({
                     'background-color': 'transparent',
-                    'box-shadow': 'none'
-                });
-                logo.css({
-                    'background': 'url(/assets/icons/logo.svg) no-repeat center',
-                    'background-size': '100% 100%'
+                    'backdrop-filter': 'none',
+                    '-webkit-backdrop-filter': 'none',
+                    'border-bottom': 'none'
                 });
                 navText.css('color', '#fff');
                 nav.removeClass(navClassName);
@@ -87,10 +83,10 @@ $(document).ready(function(){
     * Post Cover Resize
     */
     function postCover(img, container) {
-        var imgWidth = img.width();
-        var containerWidth = container.width();
-        var imgHeight = img.height();
-        var containerHeight = container.height();
+        let imgWidth = img.width();
+        let containerWidth = container.width();
+        let imgHeight = img.height();
+        let containerHeight = container.height();
 
         if (imgHeight < containerHeight) {
             img.css({
@@ -98,11 +94,11 @@ $(document).ready(function(){
                 'height': '100%'
             });
             imgWidth = img.width(),
-            containerWidth = container.width();
-            var marginLeft = (imgWidth - containerWidth) / 2;
+                containerWidth = container.width();
+            let marginLeft = (imgWidth - containerWidth) / 2;
             img.css('margin-left', '-' + marginLeft + 'px');
         } else {
-            var marginTop = (containerHeight - imgHeight) / 2;
+            let marginTop = (containerHeight - imgHeight) / 2;
             img.css('margin-top', marginTop + 'px');
         }
 
@@ -112,15 +108,15 @@ $(document).ready(function(){
     /**
      * The Post Navigator
      */
-    $('.read-next-item section').each(function() {
-        var textHeight = $(this).height();
-        var cardHeight = $('.read-next-item').height();
-        var iconHeight = $('.read-next-item .read-nav').height() + parseInt($('.read-next-item .read-nav').css('margin-top'), 10);
+    $('.read-next-item section').each(function () {
+        let textHeight = $(this).height();
+        let cardHeight = $('.read-next-item').height();
+        let iconHeight = $('.read-next-item .read-nav').height() + parseInt($('.read-next-item .read-nav').css('margin-top'), 10);
         $(this).css('margin-top', (cardHeight - textHeight) / 2 - iconHeight * 4 / 5 + 'px');
         $(this).fadeIn();
     });
 
-    $('.read-next-item img').each(function(){
+    $('.read-next-item img').each(function () {
         postCover($(this), $('.read-next-item'));
     });
 
@@ -128,14 +124,14 @@ $(document).ready(function(){
      * Pagination
      */
     function pagination() {
-        var total = parseInt($('#total_pages').val());
-        var current = parseInt($('#current_pages').val());
-        var baseUrl = $('#base_url').val();
-        var limit = 3;
+        let total = parseInt($('#total_pages').val());
+        let current = parseInt($('#current_pages').val());
+        let baseUrl = $('#base_url').val();
+        let limit = 3;
 
-        var link_html = '';
+        let link_html = '';
 
-        for (var i = current - limit; i < current; i++) {
+        for (let i = current - limit; i < current; i++) {
             if (i > 0 && i !== 1) {
                 link_html += '<a href="' + baseUrl + 'page' + i + '" class="page-link page-num">' + i + '</a>';
             } else if (i === 1) {
@@ -145,7 +141,7 @@ $(document).ready(function(){
 
         link_html += '<span class="page-link page-num active">' + current + '</span>';
 
-        for (var j = current + 1; j <= current + limit; j++) {
+        for (let j = current + 1; j <= current + limit; j++) {
             if (j <= total) {
                 link_html += '<a href="' + baseUrl + 'page' + j + '" class="page-link page-num">' + j + '</a>';
             }
@@ -153,17 +149,18 @@ $(document).ready(function(){
 
         $('#page-link-container').html(link_html);
     }
+
     pagination();
 
     /**
      * Search
      */
     function Search() {
-        var self = this;
-        var input = $('#search_input');
-        var result = $('.search_result');
+        let self = this;
+        let input = $('#search_input');
+        let result = $('.search_result');
 
-        input.focus(function() {
+        input.focus(function () {
             $('.icon-search').css('color', '#3199DB');
             result.show();
         });
@@ -179,8 +176,8 @@ $(document).ready(function(){
         });*/
     }
 
-    Search.prototype.autoComplete = function() {
-        var keywords = this.value.toLowerCase();
+    Search.prototype.autoComplete = function () {
+        let keywords = this.value.toLowerCase();
 
         if (keywords.length) {
             $('.icon-search').css('color', '#3199DB');
@@ -188,15 +185,15 @@ $(document).ready(function(){
             $('.icon-search').css('color', '#CAD3DC');
         }
 
-        $.getJSON('../../search.json').done(function(data) {
-            var html = '';
-            for (var i in data) {
-                var item = data[i];
-                var title = item.title;
-                var tags = item.tags;
-                var url = item.url;
+        $.getJSON('../../search.json').done(function (data) {
+            let html = '';
+            for (let i in data) {
+                let item = data[i];
+                let title = item.title;
+                let tags = item.tags;
+                let url = item.url;
 
-                var k = title + tags;
+                let k = title + tags;
                 if (keywords !== '' && k.toLowerCase().indexOf(keywords) >= 0) {
                     html += '<a class="search_item" href="' + item.url + '">' + item.title + '</a>';
                 }
@@ -206,13 +203,13 @@ $(document).ready(function(){
     };
 
     function debounce(fn, delay) {
-        var timer;
+        let timer;
         delay = delay || 120;
 
         return function () {
-            var ctx = this;
-            var args = arguments;
-            var later = function() {
+            let ctx = this;
+            let args = arguments;
+            let later = function () {
                 fn.apply(ctx, args);
             };
             clearTimeout(timer);
@@ -226,11 +223,11 @@ $(document).ready(function(){
      * Night mode
      */
     function nightMode() {
-        var el = $('body');
-        var className = 'night-mode';
+        let el = $('body');
+        let className = 'night-mode';
 
-        var date = new Date();
-        var hour = date.getHours();
+        let date = new Date();
+        let hour = date.getHours();
 
         if (hour <= 6 || hour >= 18) {
             el.addClass(className);
@@ -245,15 +242,16 @@ $(document).ready(function(){
      * Copy and copyright
      */
     function setClipboardData(str) {
-        str += '\n著作权归作者 Z King`Ri 所有。\n商业转载请联系作者（YD821607@126.com）获得授权，非商业转载请注明出处。\n原文: ' + location.href;
-        $('.post-content').on('copy', function(e) {
-            var data = window.clipboardData || e.originalEvent.clipboardData;
+        str += '\n著作权归作者 Z King`Ri 所有。\n商业转载请联系作者（YD821607@live.cn）获得授权，非商业转载请注明出处。\n原文: ' + location.href;
+        $('.post-content').on('copy', function (e) {
+            let data = window.clipboardData || e.originalEvent.clipboardData;
             data.setData('text/plain', str);
             e.preventDefault();
         });
     }
-    $('.post-content').on('mouseup', function(e) {
-        var txt = window.getSelection();
+
+    $('.post-content').on('mouseup', function (e) {
+        let txt = window.getSelection();
         if (txt.toString().length >= 30) {
             setClipboardData(txt);
         }

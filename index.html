@@ -39,7 +39,7 @@ description:
                     <h3 class="post-subtitle">{{ post.subtitle }}</h3>
                     {% endif %}
                     {% if post.subtitle.size==0 or post.subtitle==nil %}
-                    <p class="post-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 126}}</p>
+                    <p class="post-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 126, "……"}}</p>
                     {% endif %}
                 </section>
                 <footer class="post-meta">
@@ -50,7 +50,7 @@ description:
                             {% endfor %}
                         {% endif %}
                     </div>
-                    <time class="post-date" datetime="{{ post.date | date:"%y-%m-%d" }}">{{ post.date | date:"%Y年%-m月%-d日" }}</time>
+                    <time class="post-date" datetime="{{ post.date | date:"%y-%m-%d" }}"><i class="iconfont icon-date"></i>{{ post.date | date:"%Y年%-m月%-d日" }}</time>
                 </footer>
             </article>
         {% endfor %}
@@ -71,17 +71,7 @@ description:
                 <div class="bio">
                     <p>{{ site.bio }}</p>
                 </div>
-                {% if site.sns.size > 0 %}
-                <ul id="sns-links" class="sns-links">
-                    {% for s in site.sns %}
-                    <li>
-                        <a href="{{ s[1] }}" target="_blank">
-                            <i class="iconfont icon-{{ s[0] }}"></i>
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
+                {% include sns.html %}
             </section>
 
             {% if site.recommend-tags and site.tags.size>0 %}

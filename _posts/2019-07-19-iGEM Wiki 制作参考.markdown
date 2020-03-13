@@ -2,8 +2,8 @@
 layout: post
 title: "iGEM Wiki 制作参考"
 date: 2019-07-19 08:47:00 +0800
-categories: iGEM Wiki
-tags: iGEM Wiki
+categories: iGEM
+tags: iGEM
 ---
 # 前言
 2018 年，我非常幸运地加入了大连理工大学 iGEM 参赛队伍，并负责其中的 Wiki 制作与应用程序开发。
