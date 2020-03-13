@@ -123,6 +123,7 @@
   </script>
   
   {% if site.comments.gitalk %}
+  <script src="{{ "/assets/js/md5.min.js" | relative_url }}"></script>
   <script>
     const gitalk = new Gitalk({
         clientID: 'd3e7cfe12048e471c81a',
@@ -130,10 +131,9 @@
         repo: 'zkingri.github.io',
         owner: 'zkingri',
         admin: ['zkingri'],
-        id: location.pathname,
+        id: md5(location.pathname),
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
-
     gitalk.render('gitalk-container');
   </script>
   {% endif %}
