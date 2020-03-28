@@ -5,6 +5,7 @@
     position: sticky;
     top: 0;
     float: left;
+    width: 220px;
 }
 
 #contents ul {
