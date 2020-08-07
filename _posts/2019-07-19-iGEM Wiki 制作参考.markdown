@@ -168,7 +168,7 @@ JavaScript：[简介](http://www.w3school.com.cn/js/js_intro.asp)、
 jQuery 的相关内容也可以在 [http://www.w3school.com.cn/jquery/index.asp](http://www.w3school.com.cn/jquery/index.asp) 中有选择性地学习。
 
 编写网页时建议使用的开发工具是 WebStorm，它虽然有点重量级，但确实好用。
-你可以在 [https://www.jetbrainscom/webstorm/](https://www.jetbrainscom/webstorm/) 中获取到 WebStorm。
+你可以在 [https://www.jetbrains.com/webstorm/](https://www.jetbrains.com/webstorm/) 中获取到 WebStorm。
 WebStorm 会提供 30 天的试用期，但是我们开发时长往往不止一个月，所以最好使用校园邮箱将其注册为学生免费版，注册方式在这里略去。
 
 # 规定与须知
@@ -297,8 +297,8 @@ iGEM 中所有的页面都是基于 MediaWiki 构建的，因此，我们在 Wik
 因此，第一种解决思路不可行，使用第二种解决思路。
 
 要覆盖 iGEM 定义的属性，首先需要了解层叠样式表的层叠机制。此时 CSS 选择器部分的内容就派上了用场。
-层叠机制的详细内容可以参考 CSS 的[层叠和继承](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Introduction_to_CSS/Cascade_and_inheritance)，
-英文版的在[这里](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Cascade_and_inheritance)。
+层叠机制的详细内容可以参考 CSS 的[层叠和继承](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)，
+英文版的在[这里](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)。
 
 简单来说，网页上的元素最终应用哪一条规则定义的属性，依次取决于规则的重要性、专用性和代码顺序，且前者覆盖后者。
 

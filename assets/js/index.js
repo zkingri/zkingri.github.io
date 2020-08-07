@@ -256,6 +256,8 @@ $(document).ready(function () {
             setClipboardData(txt);
         }
     });
+    
+    $('article.markdown-body a:not(.footnote):not(.reversefootnote)').attr('target', '_blank'); /*让正文中所有链接（除脚注相关）在新标签页中打开*/
 
     $(window).scroll(function () {
         topToggle();
